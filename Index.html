@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail SFR Neufbox & Telekomunikacja Polska (2009)</title>
+    <style>
+        /* Style Sobriété 2009 Web 2.0 */
+        body {
+            background-color: #ffffff;
+            color: #222222;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #003399;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #cc0000;
+        }
+
+        #wrapper {
+            width: 980px;
+            margin: 0 auto;
+            border-left: 1px solid #dcdcdc;
+            border-right: 1px solid #dcdcdc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* En-tête */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2001a;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .logo-box img {
+            height: 48px;
+            vertical-align: middle;
+        }
+
+        .status-adsl {
+            font-size: 11px;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 5px 8px;
+            border-radius: 3px;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #00cc00;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+
+        /* Zone de Recherche Google Vintage */
+        #search-container {
+            background: #f0f4f8;
+            border: 1px solid #b4c6d8;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        #search-container img {
+            vertical-align: middle;
+            margin-right: 10px;
+            height: 35px;
+        }
+
+        #search-container input[type="text"] {
+            width: 450px;
+            padding: 5px;
+            border: 1px solid #7f9db9;
+            font-size: 13px;
+        }
+
+        #search-container input[type="submit"] {
+            padding: 4px 12px;
+            background: #e9e9e9;
+            border: 1px solid #707070;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Grille Principale */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 15px;
+        }
+
+        /* Blocks et Modules */
+        .box {
+            border: 1px solid #cccccc;
+            background: #fafafa;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+
+        .box-header {
+            background: linear-gradient(to bottom, #eeeeee, #dddddd);
+            color: #333333;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-bottom: 1px solid #cccccc;
+            font-size: 12px;
+        }
+
+        .box-header.sfr {
+            background: linear-gradient(to bottom, #e2001a, #b30014);
+            color: #ffffff;
+        }
+
+        .box-header.tp {
+            background: linear-gradient(to bottom, #0055a5, #003366);
+            color: #ffffff;
+        }
+
+        .box-content {
+            padding: 10px;
+        }
+
+        /* Messageries */
+        .mail-link {
+            display: block;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+            text-decoration: none;
+            color: #333;
+            border-radius: 3px;
+        }
+
+        .mail-link:hover {
+            border-color: #999;
+            background: #f9f9f9;
+        }
+
+        .mail-title {
+            font-weight: bold;
+            color: #e2001a;
+        }
+
+        .mail-sub {
+            font-size: 10px;
+            color: #666666;
+            margin-top: 2px;
+        }
+
+        /* Raccourcis */
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .shortcut-item {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 6px;
+            font-size: 11px;
+            text-decoration: none;
+            color: #003399;
+            display: flex;
+            align-items: center;
+        }
+
+        .shortcut-item:hover {
+            background: #f0f0f0;
+        }
+
+        .shortcut-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+        }
+
+        /* Actualités RSS */
+        .news-tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 6px 12px;
+            background: #eee;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        .tab-btn.active {
+            background: #fff;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .news-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .news-item img {
+            width: 70px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .news-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+        }
+
+        .news-desc {
+            font-size: 11px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Pied de page */
+        #footer {
+            border-top: 1px solid #cccccc;
+            margin-top: 20px;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <!-- En-tête -->
+    <div id="header">
+        <div class="logo-box">
+            <img src="https://i.postimg.cc/g2N2LHTB/sfr-neuflogo.jpg" alt="SFR Neufbox">
+            <img src="https://i.postimg.cc/N0YbNKm4/IMG-0861.png" alt="Telekomunikacja Polska" style="margin-left: 15px;">
+        </div>
+        <div class="status-adsl">
+            <span class="status-dot"></span> <strong>Ligne ADSL :</strong> Zone Non Dégroupée (1024 Kbps)
+        </div>
+    </div>
+
+    <!-- Moteur de recherche Google -->
+    <div id="search-container">
+        <form action="https://www.google.com/search" method="get" target="_blank">
+            <img src="https://i.postimg.cc/vZd9zd0X/google-sveti.png" alt="Google">
+            <input type="text" name="q" placeholder="Rechercher sur le Web avec Google...">
+            <input type="submit" value="Rechercher">
+        </form>
+    </div>
+
+    <!-- Contenu Principal -->
+    <div class="grid-container">
+        <!-- Colonne Gauche -->
+        <div class="left-col">
+            <!-- Messageries -->
+            <div class="box">
+                <div class="box-header sfr">Messageries Webmail</div>
+                <div class="box-content">
+                    <a href="https://messagerie.sfr.fr/" target="_blank" class="mail-link">
+                        <div class="mail-title">SFR Mail</div>
+                        <div class="mail-sub">Pour abonnés SFR-Fibre, Cegetel & Numericable</div>
+                    </a>
+                    <a href="https://mail.aol.com/" target="_blank" class="mail-link">
+                        <div class="mail-title">Flashmail (AOL Mail)</div>
+                        <div class="mail-sub">Pour abonnés Neuf-ci, SFR Neufbox & AOL</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Météo 2009 -->
+            <div class="box">
+                <div class="box-header">Météo du Jour</div>
+                <div class="box-content">
+                    <p style="margin:2px 0;"><strong>Paris :</strong> 16°C - Nuageux ☁️</p>
+                    <p style="margin:2px 0;"><strong>Warszawa :</strong> 14°C - Éclaircies ⛅</p>
+                </div>
+            </div>
+
+            <!-- Radios -->
+            <div class="box">
+                <div class="box-header">Radios Direct</div>
+                <div class="box-content">
+                    <p style="margin: 3px 0;"><a href="https://www.alouette.fr/" target="_blank">📻 Alouette - La Radio des Pays de la Loire</a></p>
+                    <p style="margin: 3px 0;"><a href="https://www.skyrock.fm/" target="_blank">📻 Skyrock FM</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonne Droite -->
+        <div class="right-col">
+            <!-- Raccourcis Web -->
+            <div class="box">
+                <div class="box-header tp">Raccourcis Favoris</div>
+                <div class="box-content">
+                    <div class="shortcuts-grid">
+                        <a href="https://www.amazon.fr" target="_blank" class="shortcut-item">🛒 Amazon.fr</a>
+                        <a href="https://www.teleloisirs.fr" target="_blank" class="shortcut-item">📺 Télé Loisirs</a>
+                        <a href="https://www.telemagazyn.pl" target="_blank" class="shortcut-item">🇵🇱 Program TV PL</a>
+                        <a href="https://tvp1.vod.tvp.pl" target="_blank" class="shortcut-item">🎬 TVP1</a>
+                        <a href="https://www.jeuxvideo.com" target="_blank" class="shortcut-item">🎮 Jeuxvideo.com</a>
+                        <a href="https://www.dailymotion.com" target="_blank" class="shortcut-item">📹 Dailymotion</a>
+                        <a href="https://fr.wikipedia.org" target="_blank" class="shortcut-item">📚 Wikipedia</a>
+                        <a href="https://www.youtube.com" target="_blank" class="shortcut-item">▶️ YouTube</a>
+                        <a href="https://www.onet.pl" target="_blank" class="shortcut-item">🌐 Onet.pl</a>
+                        <a href="https://www.wp.pl" target="_blank" class="shortcut-item">🌐 WP.pl</a>
+                        <a href="https://skyrock.com" target="_blank" class="shortcut-item">✍️ Skyrock Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flux RSS Actualités -->
+            <div class="box">
+                <div class="box-header">Actualités en direct (RSS)</div>
+                <div class="box-content">
+                    <div class="news-tabs">
+                        <button class="tab-btn active" onclick="loadNews('fr')">France Info</button>
+                        <button class="tab-btn" onclick="loadNews('pl')">TVP Info (PL)</button>
+                    </div>
+                    <ul id="news-container" class="news-list">
+                        <li style="padding:10px; color:#666;">Chargement des flux RSS...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <div id="footer">
+        Portail Neufbox SFR & Telekomunikacja Polska - Édition Zone Non Dégroupée (2009)<br>
+        Tous droits réservés - Optimisé pour Internet Explorer 7.0 et Mozilla Firefox 3.5 en 1024x768.
+    </div>
+</div>
+
+<script>
+    const rssFeeds = {
+        fr: 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.franceinfo.fr%2Ftitres.rss',
+        pl: 'https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.tvp.info%2Ftvp.info%2Frss%2Bxml.php'
+    };
+
+    function loadNews(lang) {
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        if(lang === 'fr') btns[0].classList.add('active');
+        else btns[1].classList.add('active');
+
+        const container = document.getElementById('news-container');
+        container.innerHTML = '<li style="padding:10px; color:#666;">Chargement des actualités...</li>';
+
+        fetch(rssFeeds[lang])
+            .then(res => res.json())
+            .then(data => {
+                if (!data.items || data.items.length === 0) {
+                    container.innerHTML = '<li>Impossible de charger le flux pour le moment.</li>';
+                    return;
+                }
+                let html = '';
+                data.items.slice(0, 5).forEach(item => {
+                    let thumb = item.thumbnail || (item.enclosure && item.enclosure.link) || 'https://via.placeholder.com/70x50?text=2009';
+                    html += `
+                        <li class="news-item">
+                            <img src="${thumb}" alt="News">
+                            <div>
+                                <p class="news-title"><a href="${item.link}" target="_blank">${item.title}</a></p>
+                                <p class="news-desc">${item.description.replace(/<[^>]*>?/gm, '').substring(0, 110)}...</p>
+                            </div>
+                        </li>
+                    `;
+                });
+                container.innerHTML = html;
+            })
+            .catch(() => {
+                container.innerHTML = '<li>Erreur de chargement du flux RSS.</li>';
+            });
+    }
+
+    // Chargement initial du flux France Info
+    loadNews('fr');
+</script>
+
+</body>
+</html>
